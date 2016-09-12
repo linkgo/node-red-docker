@@ -9,7 +9,7 @@ RUN mkdir /data
 WORKDIR /usr/src/node-red
 
 # Add node-red user so we aren't running as root.
-RUN adduser -h /usr/src/node-red -D -H node-red \
+RUN adduser -u 2001 -h /usr/src/node-red -D node-red \
     && chown -R node-red:node-red /data \
     && chown -R node-red:node-red /usr/src/node-red
 
@@ -17,7 +17,7 @@ USER node-red
 
 # package.json contains Node-RED NPM module and node dependencies
 COPY package.json /usr/src/node-red/
-RUN npm install
+RUN npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist install
 
 # User configuration directory volume
 EXPOSE 1880
