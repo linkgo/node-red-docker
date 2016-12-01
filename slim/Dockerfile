@@ -17,7 +17,9 @@ USER node-red
 
 # package.json contains Node-RED NPM module and node dependencies
 COPY package.json /usr/src/node-red/
-RUN npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist install
+RUN npm config set registry "https://registry.npm.taobao.org"
+RUN npm config set disturl "https://npm.taobao.org/dist"
+RUN npm install --production
 
 # User configuration directory volume
 EXPOSE 1880
