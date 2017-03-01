@@ -1,5 +1,5 @@
 {
-    "name": "node-red-docker",
+    "name": "node-red-docker-linkgo",
     "version": "0.16.2",
     "description": "A visual tool for wiring the Internet of Things",
     "homepage": "http://nodered.org",
