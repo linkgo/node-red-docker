@@ -1,5 +1,10 @@
 FROM node:6-alpine
 
+# sshd
+RUN apk add openssh --update-cache --repository "http://mirrors.ustc.edu.cn/alpine/v3.4/main"
+RUN ssh-keygen -A
+COPY chpass.sh /usr/bin/
+
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
 
@@ -23,6 +28,7 @@ RUN npm install --production
 
 # User configuration directory volume
 EXPOSE 1880
+EXPOSE 22
 
 # Environment variable holding file path for flows configuration
 ENV FLOWS=flows.json
