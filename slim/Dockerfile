@@ -3,7 +3,7 @@ FROM node:6-alpine
 # sshd
 RUN apk add openssh --update-cache --repository "http://mirrors.ustc.edu.cn/alpine/v3.4/main"
 RUN ssh-keygen -A
-COPY chpass.sh /usr/bin/
+COPY script/* /sbin/
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
