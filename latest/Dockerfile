@@ -1,4 +1,5 @@
-FROM node:6
+ARG NODE_VERSION=8
+FROM node:${NODE_VERSION}
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
@@ -24,5 +25,6 @@ EXPOSE 1880
 
 # Environment variable holding file path for flows configuration
 ENV FLOWS=flows.json
+ENV NODE_PATH=/usr/src/node-red/node_modules:/data/node_modules
 
 CMD ["npm", "start", "--", "--userDir", "/data"]

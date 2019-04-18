@@ -1,4 +1,5 @@
-FROM hypriot/rpi-node:6
+ARG NODE_VERSION=8
+FROM hypriot/rpi-node:${NODE_VERSION}
 
 # add support for gpio library
 RUN apt-get update
@@ -28,5 +29,6 @@ EXPOSE 1880
 
 # Environment variable holding file path for flows configuration
 ENV FLOWS=flows.json
+ENV NODE_PATH=/usr/src/node-red/node_modules:/data/node_modules
 
 CMD ["npm", "start", "--", "--userDir", "/data"]

@@ -1,4 +1,5 @@
-FROM node:6-alpine
+ARG NODE_VERSION=8
+FROM node:${NODE_VERSION}-alpine
 
 # sshd
 RUN apk add openssh --update-cache --repository "http://mirrors.ustc.edu.cn/alpine/v3.4/main"
